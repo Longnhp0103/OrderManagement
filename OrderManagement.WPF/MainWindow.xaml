@@ -1,0 +1,67 @@
+﻿<Window x:Class="OrderManagement.WPF.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:Icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
+        mc:Ignorable="d"
+        Title="Login" 
+        Height="400" Width="800" Background="Transparent" 
+        WindowStartupLocation="CenterScreen" WindowStyle="None" AllowsTransparency="True">
+    <Window.Resources>
+        <BooleanToVisibilityConverter x:Key="BoolToVis"/>
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="1">
+            <Grid.Background>
+                <SolidColorBrush Color="Purple"/>
+            </Grid.Background>
+            <Grid>
+                <Grid.Background>
+                    <ImageBrush ImageSource="/Imagines/LoginBackGround.jpg" Opacity="0.5" />
+                </Grid.Background>
+            </Grid>
+            <Border Width="300" VerticalAlignment="Center" HorizontalAlignment="Center" BorderBrush="#41047a"
+                    BorderThickness="2" CornerRadius="10" Padding="30" >
+                <Border.Background>
+                    <ImageBrush ImageSource="/Imagines/LoginBackGround.jpg" Stretch="None"/>
+                </Border.Background>
+                <StackPanel>
+                    <TextBlock Foreground="White" FontWeight="SemiBold" FontSize="16" Margin="0 0 0 10" Text="Login"/>
+                    <!--Email-->
+                    <Grid>
+                        <TextBlock Margin="35 0 5 0" VerticalAlignment="Center" Foreground="#bdbdbd"
+                                   Panel.ZIndex="1" IsHitTestVisible="False" Text="Email" Background="Transparent"
+                                   Visibility="{Binding ElementName=txtEmail, Path=Text.IsEmpty, Converter={StaticResource BoolToVis}}"/>
+                        <TextBox x:Name="txtEmail" Background="Transparent" Margin="30 0 5 0"/>
+
+                        <Icon:PackIconMaterial Kind="EmailVariant" Width="15" Foreground="#c7c7c7" VerticalAlignment="Center" Margin="10 0 0 0"/>
+                    </Grid>
+                    <!--Password-->
+                    <Grid>
+                        <TextBlock Margin="35 0 5 0" VerticalAlignment="Center" Foreground="#bdbdbd"
+                                   Panel.ZIndex="1" IsHitTestVisible="False" Text="Password" Background="Transparent"
+                                   Visibility="{Binding ElementName=txtEmail, Path=Text.IsEmpty, Converter={StaticResource BoolToVis}}"/>
+                        <PasswordBox x:Name="txtPassword" Background="Transparent" Margin="30 0 5 0"/>
+
+                        <Icon:PackIconMaterial Kind="LockOutline" Width="15" Foreground="#c7c7c7" VerticalAlignment="Center" Margin="10 0 0 0"/>
+                    </Grid>
+                    <!--Button-->
+                    <Grid Margin="0 10 0 0" >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="80"/>
+                        </Grid.ColumnDefinitions>
+                        <Button x:Name="btnLogin" Content="Sign in" Background="Purple" Height="20" VerticalAlignment="Top" Click="btnLogin_Click"/>
+                        <Button x:Name="btnExit" Content="Exit" Background="Purple" Height="20" VerticalAlignment="Center" Margin="152,0,-152,0" Click="btnExit_Click"/>
+                    </Grid>
+                </StackPanel>
+            </Border>
+        </Grid>
+    </Grid>
+</Window>
